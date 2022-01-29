@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Oswald:wght@300;500;700&display=swap');
+
+body{
+    padding: 0px;
+    margin: 0px;
+    font-size: 62.5%;
+    box-sizing: border-box;
+    font-family: "Oswald", sans-serif;
+}
+
+@mixin nameStyle {
+    font-family: 'Comfortaa', cursive;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color:white;
+}
+
+.heading-content{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    max-width: 100%;
+
+    h5{
+        @include nameStyle;
+    }
+    h1{
+        @include nameStyle;
+        font-size: 4rem;
+        font-weight: 700;
+    }
+    p{
+        @include nameStyle;
+        font-size: 2rem;
+        font-weight: 300;
+        color: #ccc;
+        word-spacing: 0.5rem;
+        letter-spacing: 0.2rem;
+    }
+
+} 
+
+.offset:before{
+    display: block;
+    content: "";
+    height: 6rem;
+}
+
+
+@media screen and (max-width: 767px){
+       
+    .heading-content{
+        top:20%;
+           
+        h5{
+           font-size: 3em;
+        }
+        h1{
+           font-size: 3em;
+        }
+        p{
+            font-size: 0.9em;
+        }
+    
+}
+}
+
+
+@media screen and (max-width: 479px){
+       
+    .heading-content{
+        top: 15%;
+           
+        h5{
+           top: 1rem;
+           font-size: 1.3em;
+        }
+        h1{
+            top: 1rem;
+           font-size: 4em;
+        }
+        p{
+            font-size: 1.5em;
+        }
+    
+}
+}

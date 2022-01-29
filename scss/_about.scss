@@ -1,0 +1,28 @@
+.aboutTitle{
+    font-size: 3.6rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#about .btn {
+    border: 0.2rem solid transparent;
+    width: 40%;
+    padding: 1rem 2rem;
+    background: #000;
+    border-radius: 1rem;
+    margin-top: 1rem;
+
+    a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 1em;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+}
+
+#about .btn:hover{
+    border: 0.2rem solid #1ebba3;
+    cursor: pointer;
+}

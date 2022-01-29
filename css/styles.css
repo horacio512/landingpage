@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Oswald:wght@300;500;700&display=swap");
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 62.5%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
+}
+
+.heading-content {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  max-width: 100%;
+}
+
+.heading-content h5 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: white;
+}
+
+.heading-content h1 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: white;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.heading-content p {
+  font-family: 'Comfortaa', cursive;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: white;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #ccc;
+  word-spacing: 0.5rem;
+  letter-spacing: 0.2rem;
+}
+
+.offset:before {
+  display: block;
+  content: "";
+  height: 6rem;
+}
+
+@media screen and (max-width: 767px) {
+  .heading-content {
+    top: 20%;
+  }
+  .heading-content h5 {
+    font-size: 3em;
+  }
+  .heading-content h1 {
+    font-size: 3em;
+  }
+  .heading-content p {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .heading-content {
+    top: 15%;
+  }
+  .heading-content h5 {
+    top: 1rem;
+    font-size: 1.3em;
+  }
+  .heading-content h1 {
+    top: 1rem;
+    font-size: 4em;
+  }
+  .heading-content p {
+    font-size: 1.5em;
+  }
+}
+
+.navbar {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  letter-spacing: 0.12rem;
+  background: rgba(0, 0, 0, 0.8) !important;
+  padding: 1rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+  padding-left: 2rem;
+}
+
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: skyblue;
+}
+
+.aboutTitle {
+  font-size: 3.6rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#about .btn {
+  border: 0.2rem solid transparent;
+  width: 40%;
+  padding: 1rem 2rem;
+  background: #000;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+#about .btn a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#about .btn:hover {
+  border: 0.2rem solid #1ebba3;
+  cursor: pointer;
+}
+
+.contactTitle {
+  font-size: 3.6rem;
+  font-weight: bold;
+  padding-bottom: 4rem;
+}
+
+.contactLabel {
+  font-size: 1.2rem;
+}
+
+footer i {
+  font-size: 2.3rem;
+}
+
+.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.youtube {
+  color: #FF0000;
+}
+
+.facebook {
+  color: #3b5998;
+}
+
+.simuladorTitle {
+  font-size: 3.6rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.simuladorText {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.machineSt {
+  font-size: 2rem;
+  word-spacing: 1rem;
+  text-align: center;
+  color: darkblue;
+}
+
+.match {
+  margin-top: 3rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.matchWin {
+  margin-top: 3rem;
+  font-size: 4rem;
+  color: green;
+  font-weight: bolder;
+  text-shadow: 0 0 0.125em #5e802c, 0 0 0.5em white;
+  text-align: center;
+}
+
+.matchLose {
+  margin-top: 3rem;
+  font-size: 4rem;
+  color: green;
+  font-weight: bolder;
+  text-shadow: 0 0 0.125em #5e802c, 0 0 0.5em white;
+  text-align: center;
+  color: red;
+  text-shadow: red;
+}
+
+.midA {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.formStats {
+  width: 10em;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* BOTON DE FIGHT! ESTILOS Y SOMBRAS */
+.btnAll {
+  text-align: center;
+  cursor: pointer;
+  margin-top: 2rem;
+  font-size: 2rem;
+  border-radius: 30% solid;
+  color: black;
+  background-color: slategray;
+  border-color: black;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-right: 2em;
+  padding-left: 2em;
+  border-radius: 0.25em;
+  text-shadow: 0 0 0.125em #880808, 0 0 0.5em white;
+  position: relative;
+  -webkit-box-shadow: inset 0 0 0.5em 0;
+          box-shadow: inset 0 0 0.5em 0;
+}
+
+.btnAll::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: black;
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+          transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  -webkit-filter: blur(1.2em);
+          filter: blur(1.2em);
+  opacity: 0.7;
+}
+
+.btnAll:hover {
+  background: black;
+  color: white;
+  text-shadow: none;
+}
+
+.btnAll::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0 0 1.2em 0.5em black;
+          box-shadow: 0 0 1.2em 0.5em black;
+  opacity: 0;
+}
+
+.btnAll:hover::after {
+  opacity: 1;
+}
+
+/* FIN DE BOTON FIGHT! */
+/*# sourceMappingURL=styles.css.map */

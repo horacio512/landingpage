@@ -1,0 +1,120 @@
+@mixin WinLose {
+    margin-top: 3rem;
+    font-size: 4rem;
+    color:green;
+    font-weight: bolder;
+    text-shadow: 0 0 0.125em rgb(94, 128, 44), 0 0 0.5em white;
+    text-align: center;
+
+}
+//Estilos del simulador
+
+.simuladorTitle{
+    font-size: 3.6rem;
+    margin-top:4rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.simuladorText{
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.machineSt{
+    font-size: 2rem;
+    word-spacing: 1rem;
+    text-align: center;
+    color: darkblue;
+}
+
+.match{
+    margin-top: 3rem;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.matchWin{
+    @include WinLose();
+}
+
+.matchLose{
+    @include WinLose();
+    color: red;
+    text-shadow: red;
+}
+
+.midA{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.formStats{
+    width: 10em;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* BOTON DE FIGHT! ESTILOS Y SOMBRAS */
+
+.btnAll{
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2rem;
+    font-size: 2rem;
+    border-radius: 30% solid;
+    color: black;
+    background-color:slategray;
+    border-color: black;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-right: 2em;
+    padding-left: 2em;
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.125em #880808, 0 0 0.5em white;
+    position: relative;
+    box-shadow: inset 0 0 0.5em 0;
+
+}
+
+
+
+.btnAll::before{
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: black;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform:  perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1.2em);
+    opacity: 0.7;
+} 
+
+.btnAll:hover{
+    background:black;
+    color: white;
+    text-shadow: none;
+}
+
+.btnAll::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 1.2em 0.5em black;
+    opacity: 0;
+}
+
+.btnAll:hover::after{
+    opacity: 1;
+}
+
+/* FIN DE BOTON FIGHT! */

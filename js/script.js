@@ -1,15 +1,46 @@
+const machineNames = ["Kioshi", "Aang", "Wan", "Korra", "Roku"]; // Array con nombres
+
+$(document).ready(function () {
+
+    //borra los divs al enviar para poder mostrar el contenido mejor
+    $("#enviar").on('click', () => {
+        $("#createStats").remove();
+        $("#byeTwo").remove();
+    });
+
+
+    //guarda el nombre dependiendo de si esta checked en local o session storage
+    $("#btnGuardar").on('click', () => {
+        if (rememberMe.checked) {
+            guardarDatos("localStorage");
+        } else {
+            guardarDatos("sStorage");
+        }
+    })
+
+    //borra los datos de local storage
+    $("#btnBorrar").on('click', () => {
+        localStorage.clear();
+    })
+
+
+$("#machine").append(`<p id="avatarShow" class=machineSt>${machineNames.join(" ")}  </p>`);
+
+$("#avatarImg").hide(); //esconde la imagen por defecto
+
+$("#avatarShow").mouseenter(function () { //muestra la imagen al pasar por arriba
+    $("#avatarImg").fadeIn();
+
+});
+$("#avatarShow").mouseleave(function () {  //la esconde de nuevo al salir
+    $("#avatarImg").fadeOut();
+});
+
+});
+
 const avatar = document.getElementById('jsCreate');
 
-//Función que revisa que al ingresarse un campo no este vacío
-function campoVacio(cadena) {
-    if (cadena == "") {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
+const user = []
 //Funcion que crea valores al azar entre 1 y 10
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -21,7 +52,7 @@ function vs(nuevoAvatar, machineAvatar, saveRandom) {
         let win = document.createElement('div');
         win.classList.add("col-12");
         //lo pongo que lleva adentro
-        win.innerHTML = `<p class="matchWin" >El ganador es: ${user[1]} </p>`
+        win.innerHTML = `<p class="matchWin" >El ganador es: ${user[user.length - 1]} </p>`
 
         //le digo donde mostrar
         avatar.appendChild(win);
@@ -36,16 +67,6 @@ function vs(nuevoAvatar, machineAvatar, saveRandom) {
         avatar.appendChild(lose);
     }
 
-}
-
-// Array con nombres
-
-const machineNames = ["Rotary", "Bumblebee", "Simbioide", "Tikitaka", "Kazekage", "Don Barredora"];
-
-// Funcion que ordena los nombres y los Junta separados por un espacio
-function orderNames(orderNames) {
-    orderNames = machineNames.sort();
-    return orderNames.join(" ");
 }
 
 
@@ -66,6 +87,7 @@ class Avatar {
         this.inteligencia = inteligencia;
         this.destreza = destreza;
     }
+
 
     fuerzaMax() {
         if (this.fuerza > 7) {
@@ -130,7 +152,7 @@ class Avatar {
         let stats = document.createElement('div');
         stats.classList.add("col-lg-4");
         //lo pongo que lleva adentro
-        stats.innerHTML = `<p class="match">El avatar ${user[1]} tiene los siguientes stats: </p>
+        stats.innerHTML = `<p class="match">El avatar ${user} tiene los siguientes stats: </p>
                             <p class="match">Una fuerza de: ${this.fuerza}</p>
                             <p class="match">Una agilidad de: ${this.agilidad}</p>
                             <p class="match">Una inteligencia de: ${this.inteligencia}</p>
@@ -163,37 +185,27 @@ class Avatar {
 
 }
 
-
-
-//llamo al elemento padre
-const jsNew = document.getElementById('machine');
-//creo elemento div para contener esta parte 
-let simulator = document.createElement('div');
-
-//lo pongo que lleva adentro
-simulator.innerHTML = `<p class=machineSt>${orderNames(machineNames)}  </p>`;
-
-//le digo donde mostrar
-jsNew.appendChild(simulator);
-
-
-
 let combatStart = document.getElementById('enviar');
 
 combatStart.addEventListener("click", sendStats);
 
+/*Funcion del boton Fight! que realiza los calculos, borra lo que hay en pantalla
+para mostrar los resultados*/
 function sendStats() {
 
+    //creo un avatar con un nombre al azar
     let machineAvatar = new Avatar(random(1, 10), random(1, 10), random(1, 10), random(1, 10));
+    //le defino los stats
     machineAvatar.fuerzaMax();
     machineAvatar.agilidadMax();
     machineAvatar.inteligenciaMax();
     machineAvatar.destrezaMax();
 
 
-
+    //creo un avatar con los datos que da el usuario
     let nuevoAvatar = new Avatar(Number(document.getElementById('fuerza').value), Number(document.getElementById('agilidad').value),
         Number(document.getElementById('inteligencia').value), Number(document.getElementById('destreza').value));
+    //le defino los stats    
     nuevoAvatar.fuerzaMax();
     nuevoAvatar.agilidadMax();
     nuevoAvatar.inteligenciaMax();
@@ -201,33 +213,137 @@ function sendStats() {
     nuevoAvatar.mostrarStats();
     machineAvatar.machineStats();
     vs(nuevoAvatar.promedio(), machineAvatar.promedio(), saveRandom);
-
-    let bye = document.getElementById("createStats");
-    bye.parentNode.removeChild(bye);
-
-    let byeTwo = document.getElementById("byeTwo");
-    byeTwo.parentNode.removeChild(byeTwo);
 }
 
 
-/*COMIENZO DEL ARRAY CON LOS DATOS DEL USUARIO*/
+/*   FUNCIONAMIENTO DE BOTONES   */
+//Funcionamiento de botones de fuerza
 
-const user = [];
-let band = true;
-/*
-//Agrego datos al array
-while (band) {
+const myInput = document.getElementById("fuerza");
+function stepper(btn) {
+    let id = btn.getAttribute("id");
+    let min = myInput.getAttribute("min");
+    let max = myInput.getAttribute("max");
+    let step = myInput.getAttribute("step");
+    let val = myInput.getAttribute("value");
+    let calcStep = (id == "increment") ? (step * 1) : (step * -1);
 
-    let userName = prompt("Ingrese su nombre: ")
+    let newValue = parseInt(val) + calcStep;
 
-    if (campoVacio(userName)) {
-        alert("Ingrese dato correcto!");
-    }
-    else {
-        user.push(userName);
-        band = false;
+    if (newValue >= min && newValue <= max) {
+        fuerza.setAttribute("value", newValue);
     }
 }
+//boton de agilidad
+const myInput2 = document.getElementById("agilidad");
+function stepper2(btn2) {
+    let id = btn2.getAttribute("id");
+    let min = myInput2.getAttribute("min");
+    let max = myInput2.getAttribute("max");
+    let step = myInput2.getAttribute("step");
+    let val = myInput2.getAttribute("value");
+    let calcStep = (id == "increment1") ? (step * 1) : (step * -1);
+
+    let newValue1 = parseInt(val) + calcStep;
+
+    if (newValue1 >= min && newValue1 <= max) {
+        agilidad.setAttribute("value", newValue1);
+    }
+}
+
+const myInput3 = document.getElementById("inteligencia");
+function stepper3(btn3) {
+    let id = btn3.getAttribute("id");
+    let min = myInput3.getAttribute("min");
+    let max = myInput3.getAttribute("max");
+    let step = myInput3.getAttribute("step");
+    let val = myInput3.getAttribute("value");
+    let calcStep = (id == "increment2") ? (step * 1) : (step * -1);
+
+    let newValue2 = parseInt(val) + calcStep;
+
+    if (newValue2 >= min && newValue2 <= max) {
+        inteligencia.setAttribute("value", newValue2);
+    }
+}
+
+const myInput4 = document.getElementById("destreza");
+function stepper4(btn4) {
+    let id = btn4.getAttribute("id");
+    let min = myInput4.getAttribute("min");
+    let max = myInput4.getAttribute("max");
+    let step = myInput4.getAttribute("step");
+    let val = myInput4.getAttribute("value");
+    let calcStep = (id == "increment3") ? (step * 1) : (step * -1);
+
+    let newValue3 = parseInt(val) + calcStep;
+
+    if (newValue3 >= min && newValue3 <= max) {
+        destreza.setAttribute("value", newValue3);
+    }
+}
+
+/* FIN DE FUNCIONAMIENTO DE BOTONES */
+
+
+//Botones de STORAGE
+
+
+function guardarDatos(storage) {
+
+    if (storage === "localStorage") {
+
+        //consigo el dato del usuario
+        let newData = document.getElementById('avatarName').value;
+        user.push(newData);
+        //chequeo que no este vacio y despues guardo un array vacio
+        if (localStorage.getItem('data') == null) {
+            localStorage.setItem('data', '[]');
+        }
+
+        let oldData = JSON.parse(localStorage.getItem('data'));
+        oldData.push(newData);
+
+        localStorage.setItem('data', JSON.stringify(oldData));
+
+    }
+
+    if (storage === "sStorage") {
+
+        //consigo el dato del usuario
+        let newData = document.getElementById('avatarName').value;
+        user.push(newData);
+        //chequeo que no este vacio y despues guardo un array vacio
+        if (sessionStorage.getItem('data') == null) {
+            sessionStorage.setItem('data', '[]');
+        }
+
+        let oldData = JSON.parse(sessionStorage.getItem('data'));
+        oldData.push(newData);
+
+        sessionStorage.setItem('data', JSON.stringify(oldData));
+    }
+
+}
+
+
+let btnSesion = document.getElementById('btnSesion');
+
+/* intente varias cosas para borrar el ultimo elemento osea el que ya se comprobo que si esta pero no me salio :()
+btnSesion.addEventListener("click", () => {
+    let user = JSON.parse(localStorage.getItem('data'));
+
+    for (let i = 0; i < user.length; i++) {
+
+        if (user[i] == document.getElementById('avatarName').value) {
+
+            let a = document.getElementById('avatarName').value.pop;
+           console.log((a));
+    
+        }
+
+        else { console.log("Nain") }
+        
+    }
+})
 */
-
-

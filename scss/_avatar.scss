@@ -118,3 +118,56 @@
 }
 
 /* FIN DE BOTON FIGHT! */
+
+
+
+/*ESTILO DE BOTONES*/
+
+.btnStyles{
+    margin-top: 1rem;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 2.8rem;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+}
+
+input[type="number"]{
+    -moz-appearance: textfield;
+    text-align: center;
+    font-size: 1.5rem;
+    border: none;
+    background-color: #ffffff;
+    color: #202030;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.btnStyles button{
+    color: #3264fe;
+    background-color: #ffffff;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.btn1{
+    padding: 0.9375rem;
+    border-radius: 2.8rem 0 0 2.8rem ;
+}
+
+.btn2{
+    padding: 0.9375rem;
+    border-radius: 0 2.8rem 2.8rem 0;
+}
+
+/* FIN DE ESTILO DE BOTONES */
+
+.statsSub{
+    font-size: 1.5rem;
+    padding: 1.2rem;
+}

@@ -61,97 +61,114 @@
     <!-- AVATAR START -->
     <div class="offset container mt-3  pb-5" id="avatar">
 
-
-        <h3 class="simuladorTitle">Bienvenido al Simulador</h3>
+        <div id="reloadPage">
+            <h3 class="simuladorWelcome">Bienvenido al Simulador</h3>
+        </div>
         <div id="byeTwo">
             <p class="simuladorText">Bienvenido a este simulador en el que te enfrentaras
                 a nuestros rivales por selección aleatoria!</p>
-            <p class="simuladorText">Ellos son:</p>
+            <div class="d-flex justify-content-center pt-3 pb-5 mt-3 mb-3">
+                <button id="btnAvatars" class="btn simuladorText2">Ver Rivales</button>
+            </div>
+            <div id="newShow"></div>
 
+          
+
+            </div>
             <div id="machine" class="d-flex justify-content-center"> </div>
-            <div class="col-12 text-center">
-                <img src="./images/all.jpg" id="avatarImg" class="img-fluid w-50 pt-3 pb-3">
+
+            <div id="createText" class="col-12 col-lg-4 "></div>
+        </div>
+        <div class="d-flex justify-content-center pt-3 pb-5 mt-3 mb-3">
+            <button id="btnHistorial" class="btn simuladorText2">Ver Historial</button>
+        </div>
+        <div id="historial">
+    </div>
+    <div id="createStats" class="col-lg-12 row">
+
+        <div class="col-lg-6 col-12 midA">
+
+            <p id="nameTitle" class="simuladorTitle mb-3">Ingrese el Nombre del Avatar:</p>
+
+            <input type="text" class="form-control formStats text-start mb-3" id="avatarName" placeholder="Avatar">
+
+            <div class="checkbox mb-3">
+
+                <input type="checkbox" class="form-check-input fs-4 m-1" id="rememberMe" value="remember-me"><label
+                    class="form-check-label">
+                    <label class="form-check-label fs-6 m-2">Recordar mi Avatar</label>
+            </div>
+            <div class="col-12 row p-3">
+                <div class="col-6 text-center">
+                    <button class="btn btn-dark p-3 fs-6 pad" id="btnGuardar">Guardar Avatar</button>
+                </div>
+                <div id="errorDisplay" class="text-center col-6">
+
+                </div>
+                <div class="p-2 col-6 text-center">
+                    <button class="btn btn-dark p-3 fs-6 pad" id="btnBorrar">Borrar Datos</button>
+                </div>
+                <div id="errorDisplay-2" class="text-center col-6">
+
+                </div>
+            </div>
+            <div id="userData">
+
+
             </div>
         </div>
-        <div id="createStats" class="col-lg-12 row">
-
-            <div class="col-lg-6 col-12 midA">
-                <p class="simuladorTitle fs-1">Ingrese el Nombre del Avatar:</p>
-
-                <input type="text" class="form-control formStats text-start mb-3" id="avatarName" placeholder="Avatar">
-
-                <div class="checkbox mb-3">
-
-                    <input type="checkbox" class="form-check-input fs-4 m-1" id="rememberMe" value="remember-me"><label
-                        class="form-check-label">
-                    <label class="form-check-label fs-6 m-2">Recordar mi usuario y mi Avatar</label>
-                </div>
-                <div class="p-2">
-                    <button class="btn btn-dark p-3 fs-6" id="btnGuardar">Guardar Avatar</button>
-                </div>
-                <div class="p-2">
-                    <button class="btn btn-dark p-3 fs-6" id="btnSesion">Cargar Avatar</button>
-                </div>
-                <div class="p-2">
-                    <button class="btn btn-dark p-3 fs-6" id="btnBorrar">Borrar Avatar</button>
-                </div>
-                <div id="userData">
 
 
+
+        <div class="col-lg-6 col-12 midA">
+            <p id="statsTitle" class="simuladorTitle">Ingrese los stats del Avatar:</p>
+
+            <div class="btnStyles col-lg-3">
+                <button id="decrement" onclick="stepper(this)" class="btn1"> - </button>
+                <input type="number" min="0" max="10" step="1" value="1" readonly id="fuerza">
+                <button id="increment" onclick="stepper(this)" class="btn2"> + </button>
+
+                <div class="col-lg-9 statsSub">
+                    <p>Fuerza</p>
                 </div>
             </div>
 
 
-
-            <div class="col-lg-6 col-12 midA">
-                <p class="simuladorTitle fs-1">Ingrese los stats del Avatar:</p>
-
-                <div class="btnStyles col-lg-3">
-                    <button id="decrement" onclick="stepper(this)" class="btn1"> - </button>
-                    <input type="number" min="0" max="10" step="1" value="1" readonly id="fuerza">
-                    <button id="increment" onclick="stepper(this)" class="btn2"> + </button>
-
-                    <div class="col-lg-9 statsSub">
-                        <p>Fuerza</p>
-                    </div>
+            <div class="btnStyles col-lg-3">
+                <button id="decrement1" onclick="stepper2(this)" class="btn1"> - </button>
+                <input type="number" min="0" max="10" step="1" value="1" readonly id="agilidad">
+                <button id="increment1" onclick="stepper2(this)" class="btn2"> + </button>
+                <div class="col-lg-9 statsSub">
+                    <p>Agilidad</p>
                 </div>
-
-
-                <div class="btnStyles col-lg-3">
-                    <button id="decrement1" onclick="stepper2(this)" class="btn1"> - </button>
-                    <input type="number" min="0" max="10" step="1" value="1" readonly id="agilidad">
-                    <button id="increment1" onclick="stepper2(this)" class="btn2"> + </button>
-                    <div class="col-lg-9 statsSub">
-                        <p>Agilidad</p>
-                    </div>
-                </div>
-
-                <div class="btnStyles col-lg-3">
-                    <button id="decrement2" onclick="stepper3(this)" class="btn1"> - </button>
-                    <input type="number" min="0" max="10" step="1" value="1" readonly id="inteligencia">
-                    <button id="increment2" onclick="stepper3(this)" class="btn2"> + </button>
-                    <div class="col-lg-9 statsSub">
-                        <p>Inteligencia</p>
-                    </div>
-                </div>
-
-                <div class="btnStyles col-lg-3">
-                    <button id="decrement3" onclick="stepper4(this)" class="btn1"> - </button>
-                    <input type="number" min="0" max="10" step="1" value="1" readonly id="destreza">
-                    <button id="increment3" onclick="stepper4(this)" class="btn2"> + </button>
-                    <div class="col-lg-9 statsSub">
-                        <p>Destreza</p>
-                    </div>
-                </div>
-
             </div>
-            <div class="d-flex justify-content-center">
-                <button type="button" id="enviar" class="btnAll">Fight!</button>
+
+            <div class="btnStyles col-lg-3">
+                <button id="decrement2" onclick="stepper3(this)" class="btn1"> - </button>
+                <input type="number" min="0" max="10" step="1" value="1" readonly id="inteligencia">
+                <button id="increment2" onclick="stepper3(this)" class="btn2"> + </button>
+                <div class="col-lg-9 statsSub">
+                    <p>Inteligencia</p>
+                </div>
             </div>
-        </div>
-        <div id="jsCreate" class="col-lg-12 d-flex row">
+
+            <div class="btnStyles col-lg-3">
+                <button id="decrement3" onclick="stepper4(this)" class="btn1"> - </button>
+                <input type="number" min="0" max="10" step="1" value="1" readonly id="destreza">
+                <button id="increment3" onclick="stepper4(this)" class="btn2"> + </button>
+                <div class="col-lg-9 statsSub">
+                    <p>Destreza</p>
+                </div>
+            </div>
 
         </div>
+        <div class="d-flex justify-content-center">
+            <button type="button" id="enviar" style="display: none;" class="btnAll">Fight!</button>
+        </div>
+    </div>
+    <div id="jsCreate" class="col-lg-12 d-flex row">
+
+    </div>
 
 
     </div>
@@ -173,11 +190,8 @@
 
             <div class="col-lg-6 col-md-6 col-12">
                 <h2 class="text-center">¿Quieres conocerme?</h2>
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Laudantium velit facere eos ipsum, quia laboriosam veritatis
-                    dicta quaerat! Facilis atque, odit
-                    praesentium nobis quas tempore unde nisi ipsum hic corrupti.
+                <p class="fs-4">
+                    Soy un estudiante del desarrollo web que esta iniciando sus primeros pasos en este mundo...
                 </p>
 
                 <button class="btn w-50">

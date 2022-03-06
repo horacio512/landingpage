@@ -1,0 +1,49 @@
+
+
+[
+{
+    "id":1,
+    "name": "Kioshi",
+    "age": 230,
+    "img": "./images/kioshi.png",
+    "description":"El Avatar Kyoshi fue un Avatar del Reino Tierra, nacida inmediatamente después del Avatar Kuruk y el Avatar anterior al Avatar Roku. Asimismo, fue una mujer muy alta, y poseía los pies más grandes que cualquier Avatar."
+},
+
+{
+
+    "id":2,
+    "name": "Roku",
+    "age": 70,
+    "img": "./images/roku.png",
+    "description":"El Avatar Roku fue un Avatar nacido en la Nación del Fuego, sucesor inmediato del Avatar Kyoshi y predecesor del Avatar Aang. En forma de espíritu, Roku sirvió como una fuerza orientadora para Aang a lo largo de su búsqueda para poner fin a la Guerra de los Cien Años."
+
+},
+
+{
+    "id":3,
+    "name": "Aang",
+    "age": 13,
+    "img": "./images/aang.png",
+    "description": "Es un Nómada Aire nacido en el 12 del AG y el Avatar durante el conflicto de un siglo de duración conocido como la Guerra de los Cien Años. Su predecesor inmediato era el Avatar Roku, y su sucesor inmediato es el Avatar Korra."
+    
+},
+
+{
+    "id":4,
+    "name": "Wan",
+    "age": 20,
+    "img": "./images/wan.jpg",
+    "description": "El Avatar Wan fue el primer Avatar que vivió diez mil años antes de la época del Avatar Korra. Desterrado de su casa, aprendió a convivir con los espíritus, trabajando para lograr el equilibrio entre ellos y el resto de la humanidad, una búsqueda que, finalmente, le llevó a convertirse en el primer Avatar."
+    
+},
+
+{
+    "id":5,
+    "name": "Korra",
+    "age": 18,
+    "img": "./images/korra.jpg",
+    "description":"Korra es la encarnación actual del Avatar y la sucesora inmediata del Avatar Aang. Nacida y criada en la Tribu Agua del Sur, donde dominó Agua Control, Tierra Control y Fuego Control, fue reubicada después a Ciudad República para conseguir la habilidad del Aire Control bajo la tutela y orientación de Tenzin "
+    
+}
+
+]

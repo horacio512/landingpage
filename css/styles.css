@@ -8,6 +8,35 @@ body {
   font-family: "Oswald", sans-serif;
 }
 
+.error {
+  font-size: 1rem;
+  border: 0.1rem solid;
+  margin: 1rem 0rem;
+  padding: 0.950rem 0.950rem 0.950rem 2rem;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url("/images/error.png");
+}
+
+.success {
+  font-size: 1rem;
+  border: 0.1rem solid;
+  margin: 1rem 0rem;
+  padding: 0.950rem 0.950rem 0.950rem 2rem;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image: url("/images/success.png");
+}
+
+.pad {
+  margin: 1rem 0rem;
+  padding: 1rem 1rem 1rem 2rem;
+}
+
 .heading-content {
   position: absolute;
   top: 40%;
@@ -156,10 +185,27 @@ footer i {
   color: #3b5998;
 }
 
-.simuladorTitle {
-  font-size: 3.6rem;
-  margin-top: 4rem;
+.playAgain {
+  font-size: 1.6rem;
+  color: #2a009c;
+  padding: 0.7rem;
+}
+
+.simuladorWelcome {
+  font-size: 3rem;
+  margin-top: 2rem;
   margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  color: #1941b9;
+  font-family: 'Comfortaa';
+  font-weight: 700;
+}
+
+.simuladorTitle {
+  font-size: 2rem;
+  margin-top: 4rem;
+  padding-bottom: 3rem;
   text-align: center;
 }
 
@@ -167,6 +213,14 @@ footer i {
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.simuladorText2 {
+  font-size: 1.6rem;
+  border: #202030;
+  border-style: hidden;
+  background-color: #1941b9;
+  color: wheat;
 }
 
 .machineSt {
@@ -294,8 +348,6 @@ footer i {
   display: flex;
   background-color: #ffffff;
   border-radius: 2.8rem;
-  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
 }
 
 input[type="number"] {
@@ -334,5 +386,64 @@ input::-webkit-inner-spin-button {
 .statsSub {
   font-size: 1.5rem;
   padding: 1.2rem;
+}
+
+.elements {
+  width: 30rem;
+  height: 20rem;
+  margin-top: 3rem;
+  border-style: groove;
+  border-radius: 0.5rem;
+}
+
+.floatImg {
+  margin-top: 3rem;
+  width: 30rem;
+  height: 20rem;
+  border-style: groove;
+  border-radius: 0.5rem;
+}
+
+.textShowUp {
+  padding-top: 1.9rem;
+  padding-left: 2rem;
+  opacity: 0.25;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.avatarPics {
+  height: 10em;
+}
+
+.avatarNameStyle {
+  font-size: 3rem;
+  color: #3264fe;
+  text-align: center;
+}
+
+.avatar-age {
+  font-size: 1.6rem;
+  color: brown;
+}
+
+.avatarDesc {
+  font-size: 0.8rem;
+  color: #323279;
+}
+
+.historialTitle {
+  font-size: 2rem;
+  text-align: center;
+  margin: 1rem;
+  color: #3264fe;
+  text-decoration: underline;
+}
+
+.historialPeleas {
+  color: #ad2525;
+  margin: 1rem;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,42 +1,158 @@
-const machineNames = ["Kioshi", "Aang", "Wan", "Korra", "Roku"]; // Array con nombres
+//url con los datos de los avatars
+const URL = "./JSON/avatars.json"
 
 $(document).ready(function () {
 
+    //obtiene los datos de los avatars como nombre y su foto de un JSON local
+    //y los muestra en pantalla al hacer click luegos los oculta tambien
+    $("#btnAvatars").click(() => {
+        $.get(URL, function (res, state) {
+            if (state == "success") {
+                $("#newShow").empty();
+                res.forEach(dato => {
+                    $("#newShow").append(`
+                <div style="display: none; class= "col-12"> 
+                           <div class="col-4 avatarDesc"><p id="des-${dato.id}" style="display: none;" >${dato.description}</p></div>
+                           <div class="col-4 text-center"><p id="name-${dato.id}" class="avatarNameStyle">${dato.name}</p></div> 
+                           <div class="col-3 text-center"><img id="img-${dato.id}" src="${dato.img}" class="img-fluid avatarPics"></div>
+                           <div class="col-1 avatar-age" ><p id="id-${dato.id}" style="display: none; class="text-center">${dato.age} años.</p></div>
+                           
+                </div>`);
+                    $("#newShow").show();
+                    $("#newShow div").addClass("d-flex justify-content-around align-items-center").slideDown(1500);
+                    $(`#newShow #img-${dato.id}`).hover(function () {
+                        $(`#newShow #id-${dato.id}`).fadeIn(400);
+                    }, function () {
+                        $(`#newShow #id-${dato.id}`).fadeOut(400);
+                    })
+
+                    $(`#newShow #name-${dato.id}`).hover(function () {
+                        $(`#newShow #des-${dato.id}`).fadeIn(1000);
+                        $(`#newShow #name-${dato.id}`).animate({
+                            fontSize: "3.5rem"
+                        }, 500, function () {
+                            $(`#newShow #des-${dato.id}`).animate({
+                                textDecoration: "underline"
+                            }, 500, function () { })
+                        });
+                    }, function () {
+                        $(`#newShow #des-${dato.id}`).fadeOut(1000);
+                        $(`#newShow #name-${dato.id}`).animate({
+                            fontSize: "3rem"
+
+                        }, 500, function () { });
+                    });
+                })
+            }
+            $("#newShow").append(`<div class="text-center pt-5"> 
+                <button id="ocult" class="btn simuladorText2">Ocultar</button>
+                </div>`);
+            $("#ocult").on('click', () => {
+                $("#newShow").slideUp(1500);
+            })
+        });
+    })
+
+
+
     //borra los divs al enviar para poder mostrar el contenido mejor
+    //ademas crea el boton para jugar de nuevo
     $("#enviar").on('click', () => {
         $("#createStats").remove();
         $("#byeTwo").remove();
+        $("#reloadPage").append(`<div class="d-flex justify-content-center align-items-center">
+        <p class="playAgain">Jugar de Nuevo</p>
+        <img id="reload" src="./images/reload.png" class="img-fluid btn"></div>`);
+
+        //permite re cargar la pagina para jugar de nuevo
+        $("#reload").click(function () {
+            location.reload(true);
+        });
+
     });
 
 
     //guarda el nombre dependiendo de si esta checked en local o session storage
     $("#btnGuardar").on('click', () => {
-        if (rememberMe.checked) {
-            guardarDatos("localStorage");
-        } else {
-            guardarDatos("sStorage");
+
+        //muestra cartel de error en caso de que este vacio
+        if (avatarName.value == "") {
+            $("#errorDisplay").empty();
+            $("#errorDisplay").append(`<p id="err-2" class="error">Ingrese un nombre para continuar</p>`);
+        }
+        else {
+            $("#errorDisplay #err-2").fadeOut(1000, function () {
+                $("#errorDisplay #err-2").remove();
+            });
+            if (rememberMe.checked) {
+                guardarDatos("localStorage");
+                $("#enviar").fadeIn(2000);
+                $("#btnGuardar").hide();
+            } else {
+                guardarDatos("sStorage");
+                $("#enviar").fadeIn(2000);
+                $("#btnGuardar").hide();
+            }
         }
     })
 
-    //borra los datos de local storage
+    //borra los datos de local storage referentes al usuario y muestra una confirmación
     $("#btnBorrar").on('click', () => {
-        localStorage.clear();
+        window.localStorage.removeItem('data');
+        sessionStorage.clear();
+        $("#errorDisplay-2").empty();
+        $("#errorDisplay-2").append(`<p id="err-3" class="success">Datos Borrados</p>`);
+        $("#errorDisplay-2").animate($("#err-3").fadeOut(6000));
+    })
+
+    //Historial
+
+    $("#btnHistorial").on('click', () => {
+        $("#historial").empty();
+        let historialPelea = localStorage.getItem('historial');
+
+        let myData = JSON.parse(historialPelea);
+            //si el historial esta vacio muestra un error en pantalla
+        if (localStorage.getItem('historial') == null) {
+            $("#historial").append(`<h3 class="historialTitle">Historial Vacio</h3>`)
+        } 
+        else {
+            $("#historial").append(`<h3 class="historialTitle">Historial de Peleas</h3>`)
+            //muestra en pantalla los datos de historial siendo el usuario el avatar y quien gano.
+            for (let i = 0; i < myData.length; i++) {
+
+                $("#historial").append(`<div class="text-center"><p class="fs-2 ">${(myData[i].usuario)} VS ${(myData[i].maquina)}</p>
+                                <p class="fs-2 historialPeleas">Ganador  ${(myData[i].ganador)}</p></div>`);
+            }
+            //crea el boton para borrar el historial
+            $("#historial").append(`<div class="text-center"><button id="borrarHistorial" class="btn simuladorText2 text-center">Borrar Historial</button></div>`);
+            //borra solo el historial
+            $("#borrarHistorial").on('click', () => {
+                window.localStorage.removeItem('historial');
+            //muestra confirmacion al borrar
+                $("#historial").empty();
+                $("#historial").append(`<p id="err-3" class="success col-3">Datos Borrados</p>`);
+                $("historial").animate($("#err-3").fadeOut(6000));
+            });
+        }
     })
 
 
-$("#machine").append(`<p id="avatarShow" class=machineSt>${machineNames.join(" ")}  </p>`);
-
-$("#avatarImg").hide(); //esconde la imagen por defecto
-
-$("#avatarShow").mouseenter(function () { //muestra la imagen al pasar por arriba
-    $("#avatarImg").fadeIn();
-
-});
-$("#avatarShow").mouseleave(function () {  //la esconde de nuevo al salir
-    $("#avatarImg").fadeOut();
 });
 
-});
+
+let saveRandom = "";
+//Funcion que elije un nombre al azar de la API local 
+function randomAvatar() {
+    const random = Math.random() * 5 | 0;
+    $.get(URL, function (data) {
+
+        const randomName = data[random].name;
+        saveRandom = randomName;
+    })
+}
+//Guardo el nombre aleatorio para poder usarlo
+const execute = randomAvatar();
 
 const avatar = document.getElementById('jsCreate');
 
@@ -45,17 +161,20 @@ const user = []
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
+
 //Funcion que determina que avatar gano la lucha
+let winner = true;
 function vs(nuevoAvatar, machineAvatar, saveRandom) {
     if (nuevoAvatar > machineAvatar) {
 
         let win = document.createElement('div');
         win.classList.add("col-12");
-        //lo pongo que lleva adentro
+        //muestra al ganador utilizando al último usuario creado
         win.innerHTML = `<p class="matchWin" >El ganador es: ${user[user.length - 1]} </p>`
 
         //le digo donde mostrar
         avatar.appendChild(win);
+        winner = true;
     }
 
     else {
@@ -65,20 +184,13 @@ function vs(nuevoAvatar, machineAvatar, saveRandom) {
         lose.innerHTML = `<p class="matchLose">El ganador es: ${saveRandom} </p>`
         //le digo donde mostrar
         avatar.appendChild(lose);
+        winner = false;
     }
 
 }
 
 
-//Funcion que elije un nombre al azar del array machineNames
-function randomAvatar() {
-    const random = Math.random() * machineNames.length | 0;
-    const randomName = machineNames[random];
-    return randomName;
-}
-//Guardo el nombre aleatorio para poder usarlo
-const saveRandom = randomAvatar();
-
+//objeto con su constructor para la funcionalidad de la "pelea"
 class Avatar {
 
     constructor(fuerza, agilidad, inteligencia, destreza) {
@@ -88,6 +200,7 @@ class Avatar {
         this.destreza = destreza;
     }
 
+    //funciones que calculan los stats
 
     fuerzaMax() {
         if (this.fuerza > 7) {
@@ -142,11 +255,14 @@ class Avatar {
         }
 
     }
+    // fin de funciones que calculan los stats
 
+    //funcion que calcula el promedio
     promedio() {
         return (this.fuerza + this.inteligencia + this.agilidad + this.destreza) / 4;
     }
 
+    //funcion que muestra en pantalla el resultado de los stats
     mostrarStats() {
 
         let stats = document.createElement('div');
@@ -189,10 +305,8 @@ let combatStart = document.getElementById('enviar');
 
 combatStart.addEventListener("click", sendStats);
 
-/*Funcion del boton Fight! que realiza los calculos, borra lo que hay en pantalla
-para mostrar los resultados*/
+//Funcion del boton Fight! que realiza los calculos
 function sendStats() {
-
     //creo un avatar con un nombre al azar
     let machineAvatar = new Avatar(random(1, 10), random(1, 10), random(1, 10), random(1, 10));
     //le defino los stats
@@ -213,8 +327,11 @@ function sendStats() {
     nuevoAvatar.mostrarStats();
     machineAvatar.machineStats();
     vs(nuevoAvatar.promedio(), machineAvatar.promedio(), saveRandom);
-}
 
+    //ejecuto funcion para guardar un historial de peleas
+    saveMatches(saveRandom, user[user.length - 1], winner);
+
+}
 
 /*   FUNCIONAMIENTO DE BOTONES   */
 //Funcionamiento de botones de fuerza
@@ -283,10 +400,36 @@ function stepper4(btn4) {
     }
 }
 
+
+
 /* FIN DE FUNCIONAMIENTO DE BOTONES */
 
 
 //Botones de STORAGE
+
+function saveMatches(machine, user, winner) {
+
+
+    let victory = "";
+    if (winner == true) {
+        victory = user;
+    }
+    else if (winner == false) {
+        victory = machine;
+    }
+
+    let history = { usuario: user, maquina: machine, ganador: victory };
+
+    if (localStorage.getItem('historial') == null) {
+        localStorage.setItem('historial', '[]');
+    }
+
+    let fight1 = JSON.parse(localStorage.getItem('historial'));
+    fight1.push(history);
+
+    localStorage.setItem('historial', JSON.stringify(fight1));
+
+}
 
 
 function guardarDatos(storage) {
@@ -326,5 +469,3 @@ function guardarDatos(storage) {
 
 }
 
-
-let btnSesion = document.getElementById('btnSesion');

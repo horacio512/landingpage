@@ -9,10 +9,28 @@
 }
 //Estilos del simulador
 
-.simuladorTitle{
-    font-size: 3.6rem;
-    margin-top:4rem;
+.playAgain{
+    font-size: 1.6rem;
+    color: rgb(42, 0, 156);
+    padding: 0.7rem;
+}
+
+
+.simuladorWelcome{
+    font-size: 3rem;
+    margin-top:2rem;
     margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    color:#1941b9 ;
+    font-family: 'Comfortaa';
+    font-weight: 700;
+}
+
+.simuladorTitle{
+    font-size: 2rem;
+    margin-top:4rem;
+    padding-bottom: 3rem;
     text-align: center;
 }
 
@@ -20,6 +38,14 @@
     font-weight: bold;
     font-size: 1.5rem;
     text-align: center;
+} 
+
+.simuladorText2 {
+    font-size: 1.6rem;
+    border: #202030;
+    border-style:hidden;
+    background-color:#1941b9;
+    color:wheat;
 }
 
 .machineSt{
@@ -123,6 +149,7 @@
 
 /*ESTILO DE BOTONES*/
 
+
 .btnStyles{
     margin-top: 1rem;
     transform: translate(-50%,-50%);
@@ -131,7 +158,6 @@
     display: flex;
     background-color: #ffffff;
     border-radius: 2.8rem;
-    box-shadow: 0 20px 30px rgba(0,0,0,0.15);
 }
 
 input[type="number"]{
@@ -170,4 +196,71 @@ input::-webkit-inner-spin-button{
 .statsSub{
     font-size: 1.5rem;
     padding: 1.2rem;
+}
+
+//imagen de avatares
+
+.elements{
+    width: 30rem;
+    height: 20rem;
+    margin-top: 3rem;
+    border-style: groove;
+    border-radius: 0.5rem;
+}
+
+.floatImg{
+    margin-top: 3rem;
+    width: 30rem;
+    height: 20rem;
+    border-style:groove;
+    border-radius: 0.5rem;
+}
+
+//texto que aparece al hacer hover en la foto
+
+.textShowUp{
+    padding-top: 1.9rem;
+    padding-left: 2rem;
+    opacity: 0.25;
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.avatarPics{
+    
+    height: 10em;
+
+}
+
+.avatarNameStyle{
+    font-size: 3rem;
+    color: #3264fe;
+    text-align: center;
+}
+
+.avatar-age{
+    font-size: 1.6rem;
+    color:brown;
+}
+
+.avatarDesc{
+    font-size: 0.8rem;
+    color: rgb(50, 50, 121);
+
+}
+
+.historialTitle{
+    font-size: 2rem;
+    text-align: center;
+    margin: 1rem;
+    color: #3264fe;
+    text-decoration: underline;
+}
+
+.historialPeleas{
+    color: rgb(173, 37, 37);
+    margin: 1rem;
+
 }

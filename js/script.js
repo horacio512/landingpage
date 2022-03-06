@@ -328,22 +328,3 @@ function guardarDatos(storage) {
 
 
 let btnSesion = document.getElementById('btnSesion');
-
-/* intente varias cosas para borrar el ultimo elemento osea el que ya se comprobo que si esta pero no me salio :()
-btnSesion.addEventListener("click", () => {
-    let user = JSON.parse(localStorage.getItem('data'));
-
-    for (let i = 0; i < user.length; i++) {
-
-        if (user[i] == document.getElementById('avatarName').value) {
-
-            let a = document.getElementById('avatarName').value.pop;
-           console.log((a));
-    
-        }
-
-        else { console.log("Nain") }
-        
-    }
-})
-*/
